@@ -1,0 +1,1511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Day Travel Trends Report 2026 | ORN Trip Factory</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style type="text/tailwindcss">
+        @layer base {
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+            }
+            h1, h2, h3, h4 {
+                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+                font-weight: 600;
+                letter-spacing: -0.02em;
+            }
+        }
+        @layer components {
+            .gradient-text {
+                background: linear-gradient(135deg, #1e3a5f 0%, #3b82f6 50%, #06b6d4 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+            }
+            .card-hover {
+                transition: all 0.3s ease;
+            }
+            .card-hover:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 20px 40px -10px rgba(0,0,0,0.15);
+            }
+            .stat-card {
+                background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+                border: 1px solid rgba(148, 163, 184, 0.2);
+            }
+            .section-divider {
+                background: linear-gradient(90deg, transparent, #3b82f6, transparent);
+                height: 1px;
+            }
+            .hero-pattern {
+                background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            }
+            .quote-mark {
+                font-size: 6rem;
+                line-height: 1;
+                opacity: 0.2;
+            }
+        }
+        @media print {
+            .no-print { display: none !important; }
+            .print-break { page-break-before: always; }
+            body { background: white; }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-md border-b border-slate-200 z-50 no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-4">
+                    <img src="orn-logo.png" alt="ORN Logo" class="h-10 w-auto">
+                    <img src="tripfactory-logo.png" alt="Trip Factory Logo" class="h-8 w-auto">
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button onclick="scrollToSection('toc')" class="text-slate-600 hover:text-blue-900 font-medium transition-colors">Contents</button>
+                    <button onclick="downloadReport()" class="bg-blue-900 hover:bg-blue-800 text-white px-6 py-2 rounded-full font-medium transition-all flex items-center space-x-2 shadow-lg hover:shadow-xl">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                        </svg>
+                        <span>Download Report</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-20 hero-pattern"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-slate-50/10"></div>
+        
+        <div class="max-w-5xl mx-auto text-center relative z-10">
+            <div class="flex justify-center items-center space-x-6 mb-8 opacity-90">
+                <img src="orn-logo.png" alt="ORN" class="h-16 w-auto brightness-0 invert">
+                <span class="text-4xl text-white/50">×</span>
+                <img src="tripfactory-logo.png" alt="Trip Factory" class="h-14 w-auto brightness-0 invert">
+            </div>
+            
+            <div class="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 mb-8 border border-white/20">
+                <span class="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></span>
+                <span class="text-sm font-medium text-cyan-100">2026 Annual Report</span>
+            </div>
+            
+            <h1 class="text-5xl sm:text-6xl lg:text-7xl font-semibold mb-6 leading-tight tracking-tight">
+                Multi-Day Travel Trends<br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">& Booking Behaviors</span>
+            </h1>
+            <p class="text-xl text-slate-300 max-w-3xl mx-auto mb-10 leading-relaxed font-light">
+                A comprehensive analysis of the evolving multi-day travel landscape. 
+                Insights from 350,000+ trips, 800,000 bookings, and 1.3 million travelers worldwide.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center no-print">
+                <button onclick="scrollToSection('coo-address')" class="bg-cyan-500 hover:bg-cyan-400 text-slate-900 px-8 py-4 rounded-full font-semibold text-lg transition-all shadow-lg hover:shadow-cyan-500/25 flex items-center space-x-2">
+                    <span>Read the Report</span>
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-slate-50 to-transparent"></div>
+    </header>
+
+    <!-- Table of Contents -->
+    <section id="toc" class="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="bg-white rounded-2xl shadow-lg p-8 border border-slate-100">
+            <h2 class="text-2xl font-semibold text-slate-900 mb-6">Table of Contents</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <a href="#coo-address" class="flex items-center p-4 rounded-xl hover:bg-slate-50 transition-colors group">
+                    <span class="w-10 h-10 bg-blue-100 text-blue-900 rounded-lg flex items-center justify-center font-semibold mr-4 group-hover:bg-blue-900 group-hover:text-white transition-colors">1</span>
+                    <div>
+                        <div class="font-semibold text-slate-900">COO Address</div>
+                        <div class="text-sm text-slate-500">A message from Raj Kumar</div>
+                    </div>
+                </a>
+                <a href="#methodology" class="flex items-center p-4 rounded-xl hover:bg-slate-50 transition-colors group">
+                    <span class="w-10 h-10 bg-blue-100 text-blue-900 rounded-lg flex items-center justify-center font-semibold mr-4 group-hover:bg-blue-900 group-hover:text-white transition-colors">2</span>
+                    <div>
+                        <div class="font-semibold text-slate-900">Methodology</div>
+                        <div class="text-sm text-slate-500">Data sources and approach</div>
+                    </div>
+                </a>
+                <a href="#executive-summary" class="flex items-center p-4 rounded-xl hover:bg-slate-50 transition-colors group">
+                    <span class="w-10 h-10 bg-blue-100 text-blue-900 rounded-lg flex items-center justify-center font-semibold mr-4 group-hover:bg-blue-900 group-hover:text-white transition-colors">3</span>
+                    <div>
+                        <div class="font-semibold text-slate-900">Executive Summary</div>
+                        <div class="text-sm text-slate-500">Key findings at a glance</div>
+                    </div>
+                </a>
+                <a href="#chapter1" class="flex items-center p-4 rounded-xl hover:bg-slate-50 transition-colors group">
+                    <span class="w-10 h-10 bg-cyan-100 text-cyan-900 rounded-lg flex items-center justify-center font-semibold mr-4 group-hover:bg-cyan-600 group-hover:text-white transition-colors">4</span>
+                    <div>
+                        <div class="font-semibold text-slate-900">Chapter 1</div>
+                        <div class="text-sm text-slate-500">Travel Costs Rise, Expectations Follow</div>
+                    </div>
+                </a>
+                <a href="#chapter2" class="flex items-center p-4 rounded-xl hover:bg-slate-50 transition-colors group">
+                    <span class="w-10 h-10 bg-indigo-100 text-indigo-900 rounded-lg flex items-center justify-center font-semibold mr-4 group-hover:bg-indigo-600 group-hover:text-white transition-colors">5</span>
+                    <div>
+                        <div class="font-semibold text-slate-900">Chapter 2</div>
+                        <div class="text-sm text-slate-500">The Definition of Luxury is Changing</div>
+                    </div>
+                </a>
+                <a href="#chapter3" class="flex items-center p-4 rounded-xl hover:bg-slate-50 transition-colors group">
+                    <span class="w-10 h-10 bg-purple-100 text-purple-900 rounded-lg flex items-center justify-center font-semibold mr-4 group-hover:bg-purple-600 group-hover:text-white transition-colors">6</span>
+                    <div>
+                        <div class="font-semibold text-slate-900">Chapter 3</div>
+                        <div class="text-sm text-slate-500">Direct Bookings Dominate, Discovery Diversifies</div>
+                    </div>
+                </a>
+                <a href="#chapter4" class="flex items-center p-4 rounded-xl hover:bg-slate-50 transition-colors group">
+                    <span class="w-10 h-10 bg-emerald-100 text-emerald-900 rounded-lg flex items-center justify-center font-semibold mr-4 group-hover:bg-emerald-600 group-hover:text-white transition-colors">7</span>
+                    <div>
+                        <div class="font-semibold text-slate-900">Chapter 4</div>
+                        <div class="text-sm text-slate-500">AI Moves Closer to the Trip</div>
+                    </div>
+                </a>
+                <a href="#business-implications" class="flex items-center p-4 rounded-xl hover:bg-slate-50 transition-colors group">
+                    <span class="w-10 h-10 bg-amber-100 text-amber-900 rounded-lg flex items-center justify-center font-semibold mr-4 group-hover:bg-amber-600 group-hover:text-white transition-colors">8</span>
+                    <div>
+                        <div class="font-semibold text-slate-900">Strategic Implications</div>
+                        <div class="text-sm text-slate-500">What this means for travel businesses</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- COO Address -->
+    <section id="coo-address" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="bg-white rounded-3xl shadow-xl overflow-hidden border border-slate-100">
+            <div class="grid grid-cols-1 lg:grid-cols-2">
+                <div class="p-8 lg:p-12">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-12 h-12 bg-gradient-to-br from-blue-900 to-cyan-600 rounded-xl flex items-center justify-center">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                            </svg>
+                        </div>
+                        <span class="text-sm font-semibold text-blue-900 uppercase tracking-wider">COO Address</span>
+                    </div>
+                    
+                    <h2 class="text-3xl font-semibold text-slate-900 mb-6">A Message from Raj Kumar</h2>
+                    
+                    <div class="prose prose-slate max-w-none">
+                        <p class="text-lg text-slate-600 leading-relaxed mb-4">
+                            Every year, our industry produces countless trend reports—many focusing on destinations or experience types generating momentary interest. While these offer valuable perspectives, they often miss what matters most to those of us running travel businesses: <strong>the operational reality of selling, planning, and delivering multi-day experiences.</strong>
+                        </p>
+                        
+                        <p class="text-slate-600 leading-relaxed mb-4">
+                            That's why we've prepared this report. Our goal is to surface the business side of the story—what it actually looks like to operate in today's market, grounded in real data rather than speculation.
+                        </p>
+                        
+                        <p class="text-slate-600 leading-relaxed mb-4">
+                            What makes this perspective possible is our unique vantage point. At ORN Trip Factory, we work with businesses across almost every country in the world. Looking back at last year's activity, we observed more than <strong>350,000 multi-day trips</strong> and <strong>800,000 bookings</strong>. But booking data alone doesn't tell the whole story.
+                        </p>
+                        
+                        <p class="text-slate-600 leading-relaxed mb-4">
+                            This report also draws from our Annual Travel Trends Survey, in which operators, DMCs, suppliers, and advisors share what they're seeing inside their own businesses. Together, these two perspectives—observed behavior and reported experience—allow us to move beyond isolated data points and understand the broader forces shaping our industry.
+                        </p>
+                        
+                        <p class="text-slate-600 leading-relaxed mb-4">
+                            Rather than offering predictions of what might happen next, this report shows what <em>is already happening</em>, so businesses can see beyond their own booking dashboards and understand how their experience fits into the larger landscape.
+                        </p>
+                        
+                        <p class="text-slate-600 leading-relaxed mb-6">
+                            When we stepped back and looked at the data as a whole, a clear picture emerged: <strong>trips cost more, expectations are higher, bookings increasingly involve groups rather than individuals,</strong> and businesses are navigating growing operational complexity across every stage of the journey.
+                        </p>
+                        
+                        <div class="bg-gradient-to-r from-blue-50 to-cyan-50 rounded-xl p-6 border-l-4 border-blue-900">
+                            <p class="text-slate-700 italic">
+                                "The year ahead will bring new pressures, but it will also bring real opportunity. Our hope is that this report helps you navigate 2026 with clarity, confidence, and a stronger sense of where to focus so you can build a stronger business."
+                            </p>
+                        </div>
+                        
+                        <div class="mt-6 flex items-center">
+                            <div class="w-12 h-12 bg-slate-200 rounded-full flex items-center justify-center mr-4">
+                                <span class="text-slate-600 font-semibold">RK</span>
+                            </div>
+                            <div>
+                                <div class="font-semibold text-slate-900">Raj Kumar</div>
+                                <div class="text-sm text-slate-500">Chief Operating Officer, ORN Trip Factory</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="relative bg-gradient-to-br from-slate-100 to-slate-200">
+                    <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=800" alt="Luxury Safari Experience" class="absolute inset-0 w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
+                    <div class="absolute bottom-8 left-8 right-8 text-white">
+                        <div class="text-sm font-medium opacity-80 mb-1">Featured Experience</div>
+                        <div class="text-xl font-semibold">Luxury Safari & Wildlife Adventures</div>
+                        <div class="text-sm opacity-80 mt-1">One of the fastest-growing segments for 2026</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Methodology -->
+    <section id="methodology" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="bg-slate-100 rounded-3xl p-8 lg:p-12">
+            <div class="flex items-center space-x-3 mb-8">
+                <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-sm">
+                    <svg class="w-6 h-6 text-blue-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                    </svg>
+                </div>
+                <h2 class="text-3xl font-semibold text-slate-900">Methodology</h2>
+            </div>
+            
+            <p class="text-lg text-slate-600 mb-8">
+                This report draws on two complementary data sources: aggregated, anonymized internal booking data and our Annual Travel Trends Survey (2025). Together, these sources combine observed booking behavior at scale with reported operator priorities, expectations, and decision-making factors.
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                <div class="bg-white rounded-2xl p-6 shadow-sm">
+                    <h3 class="text-lg font-semibold text-slate-900 mb-3 flex items-center">
+                        <svg class="w-5 h-5 text-blue-900 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path>
+                        </svg>
+                        Internal Booking Data
+                    </h3>
+                    <p class="text-slate-600 mb-4">
+                        Observed booking behavior from aggregated and anonymized data reflecting activity from more than:
+                    </p>
+                    <ul class="space-y-2 text-slate-700">
+                        <li class="flex items-center"><span class="w-2 h-2 bg-blue-900 rounded-full mr-2"></span>350,000+ multi-day trips</li>
+                        <li class="flex items-center"><span class="w-2 h-2 bg-blue-900 rounded-full mr-2"></span>800,000+ bookings</li>
+                        <li class="flex items-center"><span class="w-2 h-2 bg-blue-900 rounded-full mr-2"></span>1.3 million travelers</li>
+                    </ul>
+                    <p class="text-sm text-slate-500 mt-4">Booked during 2025 for 2026 departures. Data pulled January 2026.</p>
+                </div>
+                
+                <div class="bg-white rounded-2xl p-6 shadow-sm">
+                    <h3 class="text-lg font-semibold text-slate-900 mb-3 flex items-center">
+                        <svg class="w-5 h-5 text-cyan-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
+                        </svg>
+                        Annual Travel Trends Survey
+                    </h3>
+                    <p class="text-slate-600 mb-4">
+                        Conducted between November and December 2025, collecting responses from:
+                    </p>
+                    <div class="text-4xl font-semibold text-cyan-600 mb-2">427</div>
+                    <div class="text-slate-700">Global multi-day travel businesses</div>
+                    <p class="text-sm text-slate-500 mt-4">Focused on trips departing in 2026, with reflection on 2025 activity.</p>
+                </div>
+            </div>
+            
+            <!-- Business Types Chart -->
+            <div class="bg-white rounded-2xl p-6 shadow-sm mb-8">
+                <h3 class="text-lg font-semibold text-slate-900 mb-4">Business Types Represented in Survey</h3>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                    <div class="text-center p-4 bg-blue-50 rounded-xl">
+                        <div class="text-2xl font-semibold text-blue-900">23.65%</div>
+                        <div class="text-sm text-slate-600">Adventure Travel Operators</div>
+                    </div>
+                    <div class="text-center p-4 bg-indigo-50 rounded-xl">
+                        <div class="text-2xl font-semibold text-indigo-900">17.80%</div>
+                        <div class="text-sm text-slate-600">Travel Advisors & Agencies</div>
+                    </div>
+                    <div class="text-center p-4 bg-cyan-50 rounded-xl">
+                        <div class="text-2xl font-semibold text-cyan-900">16.39%</div>
+                        <div class="text-sm text-slate-600">Group Travel Organizers</div>
+                    </div>
+                    <div class="text-center p-4 bg-purple-50 rounded-xl">
+                        <div class="text-2xl font-semibold text-purple-900">14.05%</div>
+                        <div class="text-sm text-slate-600">Custom & Luxury Travel</div>
+                    </div>
+                    <div class="text-center p-4 bg-emerald-50 rounded-xl">
+                        <div class="text-2xl font-semibold text-emerald-900">10.54%</div>
+                        <div class="text-sm text-slate-600">DMCs & Suppliers</div>
+                    </div>
+                    <div class="text-center p-4 bg-amber-50 rounded-xl">
+                        <div class="text-2xl font-semibold text-amber-900">9.13%</div>
+                        <div class="text-sm text-slate-600">Wellness Retreat Organizers</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-amber-50 rounded-xl p-6 border border-amber-200">
+                <p class="text-sm text-slate-600">
+                    <strong>Data Interpretation:</strong> Survey findings reflect self-reported company-level information and may be influenced by respondent perception or recall. Internal platform data reflects observed behavior across our network but does not represent the entire global travel industry. The insights in this report are intended to function as directional benchmarks for multi-day travel businesses navigating 2026, rather than forecasts, prescriptions, or guarantees of future performance.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Executive Summary -->
+    <section id="executive-summary" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="bg-white rounded-3xl shadow-xl p-8 lg:p-12 border border-slate-100">
+            <div class="flex items-center space-x-3 mb-6">
+                <div class="w-12 h-12 bg-gradient-to-br from-blue-900 to-cyan-600 rounded-xl flex items-center justify-center">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                    </svg>
+                </div>
+                <h2 class="text-3xl font-semibold text-slate-900">Executive Summary</h2>
+            </div>
+            
+            <p class="text-lg text-slate-600 mb-8 leading-relaxed">
+                The dynamics shaping multi-day travel operations in 2026 reveal five critical shifts that every operator, advisor, and supplier must understand. These aren't predictions—they're observations of what is already happening across the industry.
+            </p>
+            
+            <!-- Key Stats Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mb-12">
+                <div class="stat-card rounded-2xl p-6 card-hover text-center">
+                    <div class="text-4xl font-semibold text-blue-900 mb-2">59%</div>
+                    <div class="text-sm font-semibold text-slate-600 uppercase tracking-wide">Price Increase</div>
+                    <div class="text-slate-500 text-sm mt-1">Average trip prices YoY</div>
+                </div>
+                <div class="stat-card rounded-2xl p-6 card-hover text-center">
+                    <div class="text-4xl font-semibold text-cyan-600 mb-2">56%</div>
+                    <div class="text-sm font-semibold text-slate-600 uppercase tracking-wide">Customization</div>
+                    <div class="text-slate-500 text-sm mt-1">Want private/custom trips</div>
+                </div>
+                <div class="stat-card rounded-2xl p-6 card-hover text-center">
+                    <div class="text-4xl font-semibold text-indigo-600 mb-2">50%</div>
+                    <div class="text-sm font-semibold text-slate-600 uppercase tracking-wide">Direct Bookings</div>
+                    <div class="text-slate-500 text-sm mt-1">Via website or phone</div>
+                </div>
+                <div class="stat-card rounded-2xl p-6 card-hover text-center">
+                    <div class="text-4xl font-semibold text-emerald-600 mb-2">66%</div>
+                    <div class="text-sm font-semibold text-slate-600 uppercase tracking-wide">AI Adoption</div>
+                    <div class="text-slate-500 text-sm mt-1">Operators using AI</div>
+                </div>
+                <div class="stat-card rounded-2xl p-6 card-hover text-center">
+                    <div class="text-4xl font-semibold text-purple-600 mb-2">81%</div>
+                    <div class="text-sm font-semibold text-slate-600 uppercase tracking-wide">Luxury Growth</div>
+                    <div class="text-slate-500 text-sm mt-1">Custom/luxury bookings</div>
+                </div>
+            </div>
+
+            <!-- Five Key Findings -->
+            <div class="space-y-6">
+                <div class="flex items-start space-x-4 p-6 bg-gradient-to-r from-blue-50 to-transparent rounded-2xl border-l-4 border-blue-900">
+                    <div class="w-10 h-10 bg-blue-900 text-white rounded-full flex items-center justify-center font-semibold flex-shrink-0">1</div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-slate-900 mb-2">Prices & Expectations Rising</h3>
+                        <p class="text-slate-600">Trip prices are rising across all segments, with average total trip prices increasing 59% year over year. Bookings increasingly involve more travelers per booking, and expectations for customization are rising—requiring more coordination and operational complexity behind every departure.</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-start space-x-4 p-6 bg-gradient-to-r from-indigo-50 to-transparent rounded-2xl border-l-4 border-indigo-600">
+                    <div class="w-10 h-10 bg-indigo-600 text-white rounded-full flex items-center justify-center font-semibold flex-shrink-0">2</div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-slate-900 mb-2">Discovery Diversifies, Bookings Concentrate</h3>
+                        <p class="text-slate-600">Travelers are discovering trips through AI-powered search tools, social media platforms, and digital marketing. Yet bookings concentrate on operators' own websites—50% of operators report direct channels drive the majority of their 2026 bookings.</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-start space-x-4 p-6 bg-gradient-to-r from-emerald-50 to-transparent rounded-2xl border-l-4 border-emerald-600">
+                    <div class="w-10 h-10 bg-emerald-600 text-white rounded-full flex items-center justify-center font-semibold flex-shrink-0">3</div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-slate-900 mb-2">AI Embedded in Trip Planning</h3>
+                        <p class="text-slate-600">AI use has expanded beyond marketing into drafting itineraries and proposals, as well as supporting trip personalization. These use cases add capacity in early planning stages, helping operators respond to personalization demands without proportionally increasing manual workload.</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-start space-x-4 p-6 bg-gradient-to-r from-purple-50 to-transparent rounded-2xl border-l-4 border-purple-600">
+                    <div class="w-10 h-10 bg-purple-600 text-white rounded-full flex items-center justify-center font-semibold flex-shrink-0">4</div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-slate-900 mb-2">Custom Travel is the New Baseline</h3>
+                        <p class="text-slate-600">Custom and private travel is expanding as more trips are intentionally designed around the needs and preferences of each specific group, rather than a fixed itinerary. 56% of operators report increased interest in private or custom trips.</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-start space-x-4 p-6 bg-gradient-to-r from-amber-50 to-transparent rounded-2xl border-l-4 border-amber-600">
+                    <div class="w-10 h-10 bg-amber-600 text-white rounded-full flex items-center justify-center font-semibold flex-shrink-0">5</div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-slate-900 mb-2">Operational Efficiency as Growth Constraint</h3>
+                        <p class="text-slate-600">As trip delivery becomes more complex, the operational effort required per booking increases. 41% of operators cite manual or time-consuming operational processes as a top pressure impacting 2026 tours. Differences in how operators manage planning, coordination, and administrative work now shape how much they can grow without adding disproportionate overhead.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider max-w-4xl mx-auto my-8"></div>
+
+    <!-- Chapter 1: Rising Costs -->
+    <section id="chapter1" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto print-break">
+        <div class="mb-12">
+            <span class="text-cyan-600 font-semibold text-sm uppercase tracking-wider">Chapter 1</span>
+            <h2 class="text-4xl font-semibold text-slate-900 mt-2 mb-4">Travel Costs Rise, Expectations Follow</h2>
+            <p class="text-xl text-slate-600 max-w-3xl">
+                Higher trip prices are raising traveler expectations, shifting booking behavior, and increasing the complexity of delivering multi-day experiences.
+            </p>
+        </div>
+
+        <!-- Hero Image -->
+        <div class="rounded-2xl overflow-hidden mb-12 shadow-xl">
+            <div class="relative h-96">
+                <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?w=800" alt="Group Adventure Travel" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent"></div>
+                <div class="absolute bottom-8 left-8 right-8 text-white">
+                    <div class="text-3xl font-semibold mb-2">More Travelers, Higher Stakes</div>
+                    <div class="text-lg opacity-90">Group sizes are increasing as travelers book together to manage costs and share experiences</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+            <!-- Price Increase Chart -->
+            <div class="bg-white rounded-2xl shadow-lg p-8 border border-slate-100">
+                <h3 class="text-xl font-semibold text-slate-900 mb-6">Average Trip Price by Segment (2025 vs 2026)</h3>
+                <canvas id="priceChart" height="250"></canvas>
+                <div class="mt-4 p-4 bg-slate-50 rounded-lg">
+                    <p class="text-sm text-slate-600">
+                        <strong>Key Finding:</strong> Across segments, trip prices are higher compared to 2025. 70% of operators cited rising supplier or accommodation costs as impacting their upcoming departures.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Payment Plans -->
+            <div class="bg-white rounded-2xl shadow-lg p-8 border border-slate-100">
+                <h3 class="text-xl font-semibold text-slate-900 mb-6">Payment Plan Usage by Segment</h3>
+                <div class="space-y-4">
+                    <div>
+                        <div class="flex justify-between mb-1">
+                            <span class="text-sm font-semibold text-slate-700">Travel Agencies & Advisors</span>
+                            <span class="text-sm font-semibold text-blue-900">95% <span class="text-slate-400 font-normal">(2.0 avg installments)</span></span>
+                        </div>
+                        <div class="w-full bg-slate-200 rounded-full h-2.5">
+                            <div class="bg-blue-900 h-2.5 rounded-full" style="width: 95%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between mb-1">
+                            <span class="text-sm font-semibold text-slate-700">Other Tour Operators</span>
+                            <span class="text-sm font-semibold text-blue-800">98% <span class="text-slate-400 font-normal">(1.0 avg installments)</span></span>
+                        </div>
+                        <div class="w-full bg-slate-200 rounded-full h-2.5">
+                            <div class="bg-blue-800 h-2.5 rounded-full" style="width: 98%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between mb-1">
+                            <span class="text-sm font-semibold text-slate-700">Adventure Operators</span>
+                            <span class="text-sm font-semibold text-cyan-600">96% <span class="text-slate-400 font-normal">(2.5 avg installments)</span></span>
+                        </div>
+                        <div class="w-full bg-slate-200 rounded-full h-2.5">
+                            <div class="bg-cyan-600 h-2.5 rounded-full" style="width: 96%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between mb-1">
+                            <span class="text-sm font-semibold text-slate-700">Custom & Luxury</span>
+                            <span class="text-sm font-semibold text-indigo-600">97% <span class="text-slate-400 font-normal">(1.0 avg installments)</span></span>
+                        </div>
+                        <div class="w-full bg-slate-200 rounded-full h-2.5">
+                            <div class="bg-indigo-600 h-2.5 rounded-full" style="width: 97%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between mb-1">
+                            <span class="text-sm font-semibold text-slate-700">Wellness Retreats</span>
+                            <span class="text-sm font-semibold text-emerald-600">91% <span class="text-slate-400 font-normal">(2.0 avg installments)</span></span>
+                        </div>
+                        <div class="w-full bg-slate-200 rounded-full h-2.5">
+                            <div class="bg-emerald-600 h-2.5 rounded-full" style="width: 91%"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-6 p-4 bg-blue-50 rounded-lg border border-blue-100">
+                    <p class="text-sm text-slate-700">
+                        <strong>Insight:</strong> As trip prices increase, travelers are managing costs through payment plans. Most bookings include at least one installment beyond the initial deposit, reinforcing that travelers are committing to higher-value trips by paying over time.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Group Travel Trends -->
+        <div class="bg-white rounded-2xl shadow-lg p-8 border border-slate-100 mb-8">
+            <h3 class="text-xl font-semibold text-slate-900 mb-6">More Travelers Booking Together</h3>
+            <p class="text-slate-600 mb-6">Platform data shows that bookings for 2026 departures involve more travelers per booking compared to 2025. This year, family and multi-generational travel was the most commonly reported primary group type.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                <div class="text-center p-6 bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl">
+                    <div class="text-5xl font-semibold text-blue-900 mb-2">+60%</div>
+                    <div class="text-slate-700 font-semibold">Family & Multi-Generational</div>
+                    <div class="text-sm text-slate-500 mt-1">Increased from 15% to 24%</div>
+                </div>
+                <div class="text-center p-6 bg-gradient-to-br from-slate-50 to-slate-100 rounded-2xl">
+                    <div class="text-5xl font-semibold text-slate-600 mb-2">-17%</div>
+                    <div class="text-slate-700 font-semibold">Solo Travelers</div>
+                    <div class="text-sm text-slate-500 mt-1">Declined from 24% to 20%</div>
+                </div>
+                <div class="text-center p-6 bg-gradient-to-br from-cyan-50 to-cyan-100 rounded-2xl">
+                    <div class="text-5xl font-semibold text-cyan-700 mb-2">7.6</div>
+                    <div class="text-slate-700 font-semibold">Avg Group Size</div>
+                    <div class="text-sm text-slate-500 mt-1">Other tour operators (2026)</div>
+                </div>
+            </div>
+
+            <!-- Group Type Comparison -->
+            <div class="bg-slate-50 rounded-xl p-6">
+                <h4 class="font-semibold text-slate-900 mb-4">Primary Group Type Composition: 2025 vs 2026</h4>
+                <div class="space-y-4">
+                    <div class="grid grid-cols-3 gap-4 items-center">
+                        <div class="text-sm font-semibold text-slate-700">Family/Multi-Generational</div>
+                        <div class="flex items-center">
+                            <div class="w-full bg-slate-200 rounded-full h-3 mr-2">
+                                <div class="bg-slate-400 h-3 rounded-full" style="width: 15%"></div>
+                            </div>
+                            <span class="text-sm text-slate-500">15%</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-full bg-slate-200 rounded-full h-3 mr-2">
+                                <div class="bg-blue-600 h-3 rounded-full" style="width: 24%"></div>
+                            </div>
+                            <span class="text-sm font-semibold text-blue-900">24%</span>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-3 gap-4 items-center">
+                        <div class="text-sm font-semibold text-slate-700">Couples</div>
+                        <div class="flex items-center">
+                            <div class="w-full bg-slate-200 rounded-full h-3 mr-2">
+                                <div class="bg-slate-400 h-3 rounded-full" style="width: 34%"></div>
+                            </div>
+                            <span class="text-sm text-slate-500">34%</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-full bg-slate-200 rounded-full h-3 mr-2">
+                                <div class="bg-indigo-600 h-3 rounded-full" style="width: 29%"></div>
+                            </div>
+                            <span class="text-sm font-semibold text-indigo-900">29%</span>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-3 gap-4 items-center">
+                        <div class="text-sm font-semibold text-slate-700">Solo Travelers</div>
+                        <div class="flex items-center">
+                            <div class="w-full bg-slate-200 rounded-full h-3 mr-2">
+                                <div class="bg-slate-400 h-3 rounded-full" style="width: 24%"></div>
+                            </div>
+                            <span class="text-sm text-slate-500">24%</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-full bg-slate-200 rounded-full h-3 mr-2">
+                                <div class="bg-slate-500 h-3 rounded-full" style="width: 20%"></div>
+                            </div>
+                            <span class="text-sm font-semibold text-slate-700">20%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex justify-between text-xs text-slate-400 mt-2">
+                    <span></span>
+                    <span>2025</span>
+                    <span>2026</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Customization is Baseline -->
+        <div class="bg-white rounded-2xl shadow-lg p-8 border border-slate-100 mb-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-xl font-semibold text-slate-900 mb-4">Customization is Becoming the Baseline</h3>
+                    <p class="text-slate-600 mb-4">As trip prices rise and more travelers book together, expectations are increasing not just around quality, but around how well a trip reflects the group's specific interests.</p>
+                    <div class="bg-gradient-to-r from-purple-50 to-indigo-50 rounded-xl p-6 border-l-4 border-purple-600">
+                        <div class="text-4xl font-semibold text-purple-900 mb-2">56%</div>
+                        <div class="text-slate-700">of operators have seen increased interest in private or custom trips</div>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-slate-900 mb-4">Most-Booked Experience Types (Adventure Operators)</h4>
+                    <div class="space-y-3">
+                        <div class="flex items-center">
+                            <span class="w-8 h-8 bg-amber-100 rounded-lg flex items-center justify-center mr-3">🍽️</span>
+                            <div class="flex-1">
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-sm font-semibold text-slate-700">Culinary-focused</span>
+                                    <span class="text-sm font-semibold text-amber-700">19%</span>
+                                </div>
+                                <div class="w-full bg-slate-200 rounded-full h-2">
+                                    <div class="bg-amber-500 h-2 rounded-full" style="width: 19%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center mr-3">⭐</span>
+                            <div class="flex-1">
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-sm font-semibold text-slate-700">Luxury or bespoke</span>
+                                    <span class="text-sm font-semibold text-purple-700">17%</span>
+                                </div>
+                                <div class="w-full bg-slate-200 rounded-full h-2">
+                                    <div class="bg-purple-500 h-2 rounded-full" style="width: 17%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="w-8 h-8 bg-emerald-100 rounded-lg flex items-center justify-center mr-3">🧘</span>
+                            <div class="flex-1">
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-sm font-semibold text-slate-700">Wellness or mindfulness</span>
+                                    <span class="text-sm font-semibold text-emerald-700">11%</span>
+                                </div>
+                                <div class="w-full bg-slate-200 rounded-full h-2">
+                                    <div class="bg-emerald-500 h-2 rounded-full" style="width: 11%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-sm text-slate-500 mt-4 italic">Adventure operators report that their most popular experiences often include elements beyond core adventure activities—culinary, luxury, and wellness components are increasingly blended into itineraries.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Higher Stakes, Deeper Meaning -->
+        <div class="bg-gradient-to-br from-slate-900 to-blue-900 rounded-2xl shadow-lg p-8 text-white mb-8">
+            <h3 class="text-xl font-semibold mb-6">Higher Stakes, Deeper Meaning</h3>
+            <p class="text-slate-300 mb-6">As trip prices rise, travelers are more conscious of what they get in return. Higher spending raises expectations that trips will deliver something memorable, meaningful, and clearly worth the investment.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+                <div class="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center">
+                    <div class="text-3xl font-semibold text-cyan-400 mb-1">32%</div>
+                    <div class="text-sm text-slate-300">Extended or multi-destination trips</div>
+                </div>
+                <div class="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center">
+                    <div class="text-3xl font-semibold text-cyan-400 mb-1">25%</div>
+                    <div class="text-sm text-slate-300">Community-based trips</div>
+                </div>
+                <div class="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center">
+                    <div class="text-3xl font-semibold text-cyan-400 mb-1">18%</div>
+                    <div class="text-sm text-slate-300">Expedition or exploration-based</div>
+                </div>
+                <div class="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center">
+                    <div class="text-3xl font-semibold text-cyan-400 mb-1">15%</div>
+                    <div class="text-sm text-slate-300">Skill-based or learning-focused</div>
+                </div>
+            </div>
+            
+            <div class="bg-white/5 rounded-xl p-6 border border-white/10">
+                <p class="text-slate-300 italic">"Sightseeing isn't a big thing anymore, at least for our business, since it's more seen as 'mass tourism' and our clients prefer a more unique itinerary—they avoid the major attractions that are nowadays overcrowded."</p>
+                <p class="text-slate-400 text-sm mt-2">— Matteo Troiani, Founder of Italian Custom Tours</p>
+            </div>
+        </div>
+
+        <!-- Operational Pressures -->
+        <div class="bg-white rounded-2xl shadow-lg p-8 border border-slate-100">
+            <h3 class="text-xl font-semibold text-slate-900 mb-6">Operational Complexity is Increasing</h3>
+            <p class="text-slate-600 mb-6">As trips involve more travelers per booking and expectations increasingly include customization, the operational demands on each departure grow. More people in a single booking can mean more preferences, approvals, and coordination.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-gradient-to-br from-red-50 to-orange-50 rounded-xl p-6 border-l-4 border-red-500">
+                    <div class="text-4xl font-semibold text-red-600 mb-2">41%</div>
+                    <div class="text-slate-700 font-semibold mb-1">Manual Processes</div>
+                    <div class="text-sm text-slate-600">Cite manual or time-consuming operational processes as a top pressure</div>
+                </div>
+                <div class="bg-gradient-to-br from-amber-50 to-yellow-50 rounded-xl p-6 border-l-4 border-amber-500">
+                    <div class="text-4xl font-semibold text-amber-600 mb-2">21%</div>
+                    <div class="text-slate-700 font-semibold mb-1">Finding Partners</div>
+                    <div class="text-sm text-slate-600">Difficulty finding or vetting reliable local partners</div>
+                </div>
+                <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-6 border-l-4 border-blue-500">
+                    <div class="text-4xl font-semibold text-blue-600 mb-2">14%</div>
+                    <div class="text-slate-700 font-semibold mb-1">Multi-Region Management</div>
+                    <div class="text-sm text-slate-600">Struggle managing payments/contracts across multiple regions</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider max-w-4xl mx-auto my-8"></div>
+
+    <!-- Chapter 2: Luxury Redefined -->
+    <section id="chapter2" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto print-break">
+        <div class="mb-12">
+            <span class="text-indigo-600 font-semibold text-sm uppercase tracking-wider">Chapter 2</span>
+            <h2 class="text-4xl font-semibold text-slate-900 mt-2 mb-4">The Definition of Luxury is Changing</h2>
+            <p class="text-xl text-slate-600 max-w-3xl">
+                Custom and luxury travel is expanding as more trips are designed to be immersive, flexible, and intentionally crafted—not just expensive.
+            </p>
+        </div>
+
+        <!-- Hero Image -->
+        <div class="rounded-2xl overflow-hidden mb-12 shadow-xl">
+            <div class="relative h-96">
+                <img src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=800" alt="Luxury Safari Dining" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent"></div>
+                <div class="absolute bottom-8 left-8 right-8 text-white">
+                    <div class="text-3xl font-semibold mb-2">Luxury Redefined</div>
+                    <div class="text-lg opacity-90">No longer just yacht charters or Michelin dining—today's luxury means privacy, immersion, and personal relevance</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+            <div class="bg-white rounded-2xl shadow-lg p-8 border border-slate-100">
+                <h3 class="text-xl font-semibold text-slate-900 mb-6">Custom & Luxury Booking Growth</h3>
+                <div class="flex items-end justify-center space-x-8 mb-6">
+                    <div class="text-center">
+                        <div class="text-5xl font-semibold text-slate-400 mb-2">7,172</div>
+                        <div class="text-slate-500 font-semibold">2024 Bookings</div>
+                    </div>
+                    <div class="text-4xl text-slate-300 mb-8">→</div>
+                    <div class="text-center">
+                        <div class="text-5xl font-semibold text-blue-900 mb-2">13,011</div>
+                        <div class="text-slate-500 font-semibold">2025 Bookings</div>
+                    </div>
+                </div>
+                <div class="text-center mb-6">
+                    <span class="inline-flex items-center px-4 py-2 bg-emerald-100 text-emerald-800 rounded-full font-semibold text-lg">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                        </svg>
+                        +81% Growth Year Over Year
+                    </span>
+                </div>
+                <div class="p-4 bg-indigo-50 rounded-lg border border-indigo-100">
+                    <p class="text-sm text-slate-700">
+                        <strong>Average trip price increased 34%</strong> from 2025 to 2026, with custom and luxury trips now averaging <strong>$8,042</strong>—roughly double the price of trips sold by most other business types.
+                    </p>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow-lg p-8 border border-slate-100">
+                <h3 class="text-xl font-semibold text-slate-900 mb-6">Today's Luxury: Rising Interest Trip Types</h3>
+                <canvas id="luxuryChart" height="220"></canvas>
+                <p class="text-sm text-slate-500 mt-4 italic">According to custom and luxury operators' self-reported inquiries and bookings for 2026 departures.</p>
+            </div>
+        </div>
+
+        <!-- What Luxury Means Now -->
+        <div class="bg-white rounded-2xl shadow-lg p-8 border border-slate-100 mb-8">
+            <h3 class="text-xl font-semibold text-slate-900 mb-6">How Operators Are Adapting to Meet Expectations</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                <div class="border-l-4 border-blue-900 pl-6 py-4 bg-blue-50/50 rounded-r-xl">
+                    <div class="text-3xl font-semibold text-blue-900 mb-2">82%</div>
+                    <div class="text-slate-700 font-semibold mb-1">Creating more bespoke itineraries</div>
+                    <div class="text-sm text-slate-500">Tailor-made experiences for each group</div>
+                </div>
+                <div class="border-l-4 border-cyan-600 pl-6 py-4 bg-cyan-50/50 rounded-r-xl">
+                    <div class="text-3xl font-semibold text-cyan-600 mb-2">63%</div>
+                    <div class="text-slate-700 font-semibold mb-1">Partnering with local experts</div>
+                    <div class="text-sm text-slate-500">Unique access and authentic experiences</div>
+                </div>
+                <div class="border-l-4 border-indigo-600 pl-6 py-4 bg-indigo-50/50 rounded-r-xl">
+                    <div class="text-3xl font-semibold text-indigo-600 mb-2">45%</div>
+                    <div class="text-slate-700 font-semibold mb-1">Reducing group sizes</div>
+                    <div class="text-sm text-slate-500">Private departures and exclusivity</div>
+                </div>
+            </div>
+            
+            <div class="bg-slate-50 rounded-xl p-6">
+                <h4 class="font-semibold text-slate-900 mb-3">How Travelers Are Responding to Price Increases</h4>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="flex items-center p-4 bg-white rounded-lg shadow-sm">
+                        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                            <span class="text-2xl font-semibold text-blue-900">14%</span>
+                        </div>
+                        <div>
+                            <div class="font-semibold text-slate-900">Booking More Trips</div>
+                            <div class="text-sm text-slate-600">Despite price increases</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center p-4 bg-white rounded-lg shadow-sm">
+                        <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                            <span class="text-2xl font-semibold text-indigo-900">18%</span>
+                        </div>
+                        <div>
+                            <div class="font-semibold text-slate-900">Fewer Trips, More Spend</div>
+                            <div class="text-sm text-slate-600">Booking fewer but spending more per trip</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Personalization vs Efficiency -->
+        <div class="bg-gradient-to-br from-indigo-50 to-blue-50 rounded-2xl shadow-lg p-8 border border-indigo-100 mb-8">
+            <h3 class="text-xl font-semibold text-slate-900 mb-6">Balancing Personalization and Efficiency</h3>
+            <p class="text-slate-600 mb-6">As traveler expectations evolve, no single delivery model is emerging. Instead, operators are making deliberate choices—both in what they offer and how they deliver it.</p>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                <div class="bg-white rounded-xl p-4 text-center shadow-sm">
+                    <div class="text-2xl font-semibold text-indigo-900 mb-1">34%</div>
+                    <div class="text-xs text-slate-600">Fully personalize each trip (time-consuming)</div>
+                </div>
+                <div class="bg-white rounded-xl p-4 text-center shadow-sm">
+                    <div class="text-2xl font-semibold text-indigo-800 mb-1">21%</div>
+                    <div class="text-xs text-slate-600">Use AI to reduce time and cost</div>
+                </div>
+                <div class="bg-white rounded-xl p-4 text-center shadow-sm">
+                    <div class="text-2xl font-semibold text-indigo-700 mb-1">21%</div>
+                    <div class="text-xs text-slate-600">Modular/semi-custom approach</div>
+                </div>
+                <div class="bg-white rounded-xl p-4 text-center shadow-sm">
+                    <div class="text-2xl font-semibold text-indigo-600 mb-1">20%</div>
+                    <div class="text-xs text-slate-600">Pre-designed with small custom touches</div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-xl p-6 shadow-sm">
+                <h4 class="font-semibold text-slate-900 mb-3">Cost Implications</h4>
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center">
+                        <div class="w-3 h-3 bg-red-500 rounded-full mr-2"></div>
+                        <span class="text-slate-700">27% report increased costs due to manual personalization time</span>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-3 h-3 bg-emerald-500 rounded-full mr-2"></div>
+                        <span class="text-slate-700">18% report decreased costs as AI speeds up work</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quote -->
+        <div class="bg-slate-900 rounded-2xl shadow-lg p-8 text-white">
+            <div class="quote-mark text-cyan-400 font-serif">"</div>
+            <p class="text-xl text-slate-300 -mt-8 mb-4 relative z-10">
+                Our customers, both new and repeat, are being more demanding with the level of customization they want, and they're asking for very uncommon experiences: to visit truly off-the-beaten-path areas or experience new things. Anything that's food or wine related is growing really fast in popularity, and cultural experiences are often combined with small culinary moments.
+            </p>
+            <div class="flex items-center">
+                <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mr-4">
+                    <span class="text-white font-semibold">MT</span>
+                </div>
+                <div>
+                    <div class="font-semibold">Matteo Troiani</div>
+                    <div class="text-sm text-slate-400">Founder, Italian Custom Tours</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider max-w-4xl mx-auto my-8"></div>
+
+    <!-- Chapter 3: Direct Bookings -->
+    <section id="chapter3" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto print-break">
+        <div class="mb-12">
+            <span class="text-purple-600 font-semibold text-sm uppercase tracking-wider">Chapter 3</span>
+            <h2 class="text-4xl font-semibold text-slate-900 mt-2 mb-4">Direct Bookings Dominate, Discovery Diversifies</h2>
+            <p class="text-xl text-slate-600 max-w-3xl">
+                Trip discovery is spreading across new channels, while bookings concentrate on operators' websites.
+            </p>
+        </div>
+
+        <!-- Hero Image -->
+        <div class="rounded-2xl overflow-hidden mb-12 shadow-xl">
+            <div class="relative h-96">
+                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800" alt="AI Travel Planning" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent"></div>
+                <div class="absolute bottom-8 left-8 right-8 text-white">
+                    <div class="text-3xl font-semibold mb-2">AI-Powered Discovery</div>
+                    <div class="text-lg opacity-90">New search tools are reshaping how travelers find and evaluate multi-day trips</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+            <!-- Booking Channels -->
+            <div class="bg-white rounded-2xl shadow-lg p-8 border border-slate-100">
+                <h3 class="text-xl font-semibold text-slate-900 mb-6">Primary Booking Channels for 2026</h3>
+                <canvas id="bookingChart" height="250"></canvas>
+                <div class="mt-4 p-4 bg-purple-50 rounded-lg border border-purple-100">
+                    <p class="text-sm text-slate-700">
+                        <strong>Key Insight:</strong> While travelers may encounter trips through many different discovery channels, bookings for multi-day travel are most often finalized directly with the operator.
+                    </p>
+                </div>
+            </div>
+
+            <!-- AI Search Impact -->
+            <div class="bg-white rounded-2xl shadow-lg p-8 border border-slate-100">
+                <h3 class="text-xl font-semibold text-slate-900 mb-6">Impact of AI-Powered Search</h3>
+                <div class="space-y-6">
+                    <div class="flex items-center p-4 bg-emerald-50 rounded-xl border border-emerald-100">
+                        <div class="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                            <span class="text-2xl font-semibold text-emerald-700">14%</span>
+                        </div>
+                        <div>
+                            <div class="font-semibold text-slate-900">Increase in Bookings</div>
+                            <div class="text-sm text-slate-600">Due to AI search visibility</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center p-4 bg-red-50 rounded-xl border border-red-100">
+                        <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                            <span class="text-2xl font-semibold text-red-700">8%</span>
+                        </div>
+                        <div>
+                            <div class="font-semibold text-slate-900">Decrease in Bookings</div>
+                            <div class="text-sm text-slate-600">Trips not appearing in AI results</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center p-4 bg-slate-50 rounded-xl border border-slate-200">
+                        <div class="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                            <span class="text-2xl font-semibold text-slate-600">78%</span>
+                        </div>
+                        <div>
+                            <div class="font-semibold text-slate-900">No Change Yet</div>
+                            <div class="text-sm text-slate-600">Impact still emerging</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Social Media -->
+        <div class="bg-white rounded-2xl shadow-lg p-8 border border-slate-100 mb-8">
+            <h3 class="text-xl font-semibold text-slate-900 mb-6">Social Media and the Booking Journey</h3>
+            <p class="text-slate-600 mb-6">Social media platforms are often cited as a source of traveler inspiration, and the data highlights their emerging role within the booking journey as well. But as only 13% of operators said social media drives a significant number of bookings, most have yet to capitalize on this opportunity.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
+                <div class="text-center p-6 bg-gradient-to-br from-pink-50 to-purple-50 rounded-2xl">
+                    <div class="text-4xl font-semibold text-pink-600 mb-2">31%</div>
+                    <div class="text-sm text-slate-600">Plan to experiment with social booking in 2026</div>
+                </div>
+                <div class="text-center p-6 bg-gradient-to-br from-purple-50 to-indigo-50 rounded-2xl">
+                    <div class="text-4xl font-semibold text-purple-600 mb-2">29%</div>
+                    <div class="text-sm text-slate-600">Use social booking, report limited impact</div>
+                </div>
+                <div class="text-center p-6 bg-gradient-to-br from-slate-50 to-slate-100 rounded-2xl">
+                    <div class="text-4xl font-semibold text-slate-600 mb-2">27%</div>
+                    <div class="text-sm text-slate-600">Focus on other channels</div>
+                </div>
+                <div class="text-center p-6 bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl">
+                    <div class="text-4xl font-semibold text-blue-600 mb-2">13%</div>
+                    <div class="text-sm text-slate-600">Social drives significant bookings</div>
+                </div>
+            </div>
+            
+            <div class="bg-amber-50 rounded-xl p-6 border border-amber-200">
+                <p class="text-sm text-slate-700">
+                    <strong>Opportunity:</strong> Many operators recognize the importance of social media as part of trip discovery, but have yet to fully optimize their social strategy. Operators who will see the most traction treat social posts not as standalone inspiration, but as the first step in a guided path toward booking.
+                </p>
+            </div>
+        </div>
+
+        <!-- AI Optimization -->
+        <div class="bg-gradient-to-br from-purple-900 to-indigo-900 rounded-2xl shadow-lg p-8 text-white mb-8">
+            <h3 class="text-xl font-semibold mb-6">How Operators Are Adapting to AI Discovery</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-6">
+                <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6">
+                    <div class="text-5xl font-semibold text-cyan-400 mb-2">52%</div>
+                    <div class="text-slate-200">Unsure how to optimize for AI search discovery</div>
+                </div>
+                <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6">
+                    <div class="text-5xl font-semibold text-cyan-400 mb-2">34%</div>
+                    <div class="text-slate-200">Actively updating website/content for AI visibility</div>
+                </div>
+            </div>
+            <div class="bg-white/5 rounded-xl p-6 border border-white/10">
+                <p class="text-slate-300">While AI-driven discovery is still evolving, operators who begin optimizing their content for AI search now will gain a competitive advantage. The most effective response mirrors what already supports strong direct bookings: clear trip information, well-structured content, and straightforward paths to book.</p>
+            </div>
+        </div>
+
+        <!-- Key Takeaway -->
+        <div class="bg-white rounded-2xl shadow-lg p-8 border border-slate-100">
+            <h3 class="text-xl font-semibold text-slate-900 mb-4">The Discovery-to-Booking Funnel</h3>
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                <div class="flex-1 text-center p-4">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                        <svg class="w-8 h-8 text-blue-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                    </div>
+                    <div class="font-semibold text-slate-900">AI Search</div>
+                    <div class="text-sm text-slate-500">Discovery</div>
+                </div>
+                <div class="text-slate-300 hidden md:block">→</div>
+                <div class="flex-1 text-center p-4">
+                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                        <svg class="w-8 h-8 text-purple-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path>
+                        </svg>
+                    </div>
+                    <div class="font-semibold text-slate-900">Social Media</div>
+                    <div class="text-sm text-slate-500">Inspiration</div>
+                </div>
+                <div class="text-slate-300 hidden md:block">→</div>
+                <div class="flex-1 text-center p-4">
+                    <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                        <svg class="w-8 h-8 text-indigo-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <div class="font-semibold text-slate-900">Operator Website</div>
+                    <div class="text-sm text-slate-500">Direct Booking</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider max-w-4xl mx-auto my-8"></div>
+
+    <!-- Chapter 4: AI in Travel -->
+    <section id="chapter4" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto print-break">
+        <div class="mb-12">
+            <span class="text-emerald-600 font-semibold text-sm uppercase tracking-wider">Chapter 4</span>
+            <h2 class="text-4xl font-semibold text-slate-900 mt-2 mb-4">AI Moves Closer to the Trip</h2>
+            <p class="text-xl text-slate-600 max-w-3xl">
+                AI is no longer confined to marketing and internal efficiency—it now also supports itinerary planning and early-stage trip delivery.
+            </p>
+        </div>
+
+        <!-- Hero Image -->
+        <div class="rounded-2xl overflow-hidden mb-12 shadow-xl">
+            <div class="relative h-96">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800" alt="AI Travel Technology" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent"></div>
+                <div class="absolute bottom-8 left-8 right-8 text-white">
+                    <div class="text-3xl font-semibold mb-2">From Marketing to Itineraries</div>
+                    <div class="text-lg opacity-90">AI adoption is expanding into workflows that directly shape the trip experience</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+            <!-- AI Adoption Growth -->
+            <div class="bg-white rounded-2xl shadow-lg p-8 border border-slate-100">
+                <h3 class="text-xl font-semibold text-slate-900 mb-6">AI Adoption Becoming the Norm</h3>
+                <p class="text-slate-600 mb-6">Comparing survey data year over year, a clear shift towards AI adoption emerges—the share of operators using AI increased by 14%.</p>
+                
+                <div class="space-y-6">
+                    <div>
+                        <div class="flex justify-between mb-2">
+                            <span class="font-semibold text-slate-700">2025</span>
+                            <span class="font-semibold text-slate-900">58%</span>
+                        </div>
+                        <div class="w-full bg-slate-200 rounded-full h-4">
+                            <div class="bg-slate-600 h-4 rounded-full" style="width: 58%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between mb-2">
+                            <span class="font-semibold text-slate-700">2026</span>
+                            <span class="font-semibold text-emerald-600">66%</span>
+                        </div>
+                        <div class="w-full bg-slate-200 rounded-full h-4">
+                            <div class="bg-emerald-600 h-4 rounded-full" style="width: 66%"></div>
+                        </div>
+                    </div>
+                    <div class="p-4 bg-emerald-50 rounded-lg border border-emerald-200">
+                        <div class="flex items-center">
+                            <svg class="w-6 h-6 text-emerald-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                            </svg>
+                            <span class="font-semibold text-emerald-800">+14% increase in AI adoption year over year</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-6 p-4 bg-slate-50 rounded-lg">
+                    <p class="text-sm text-slate-600">
+                        As AI becomes more common across everyday workflows, this creates a widening gap in how operators manage time and workload. Operators already using AI are better positioned to handle growing inquiry volume and personalization demands.
+                    </p>
+                </div>
+            </div>
+
+            <!-- AI Use Cases -->
+            <div class="bg-white rounded-2xl shadow-lg p-8 border border-slate-100">
+                <h3 class="text-xl font-semibold text-slate-900 mb-6">How Operators Use AI</h3>
+                <canvas id="aiUseChart" height="220"></canvas>
+                <div class="mt-4 p-4 bg-emerald-50 rounded-lg border border-emerald-100">
+                    <p class="text-sm text-slate-700">
+                        <strong>Notable shift:</strong> AI use for building itineraries increased <strong>57% year over year</strong>, rising from 28% to 44%.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- AI in Trip Planning -->
+        <div class="bg-white rounded-2xl shadow-lg p-8 border border-slate-100 mb-8">
+            <h3 class="text-xl font-semibold text-slate-900 mb-6">AI in Trip Planning & Delivery</h3>
+            <p class="text-slate-600 mb-6">While AI use is now widespread, where operators are applying it has evolved meaningfully. Last year, AI use was concentrated in marketing and content creation. This year, those use cases remain the most common, but they are now being joined by more traveler-facing applications.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-6 text-center">
+                    <div class="text-3xl font-semibold text-blue-900 mb-2">44%</div>
+                    <div class="text-slate-700 font-semibold">Create trip itineraries or proposals</div>
+                    <div class="text-sm text-slate-600 mt-2">Up 57% year over year</div>
+                </div>
+                <div class="bg-gradient-to-br from-cyan-50 to-cyan-100 rounded-xl p-6 text-center">
+                    <div class="text-3xl font-semibold text-cyan-700 mb-2">58%</div>
+                    <div class="text-slate-700 font-semibold">Marketing or content creation</div>
+                    <div class="text-sm text-slate-600 mt-2">Most common use case</div>
+                </div>
+                <div class="bg-gradient-to-br from-indigo-50 to-indigo-100 rounded-xl p-6 text-center">
+                    <div class="text-3xl font-semibold text-indigo-700 mb-2">26%</div>
+                    <div class="text-slate-700 font-semibold">Customer support & inquiry management</div>
+                    <div class="text-sm text-slate-600 mt-2">Growing application</div>
+                </div>
+            </div>
+
+            <!-- Wellness AI -->
+            <div class="bg-slate-50 rounded-xl p-6">
+                <h4 class="font-semibold text-slate-900 mb-4">How Wellness Operators Are Incorporating AI</h4>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="flex items-center p-4 bg-white rounded-lg shadow-sm">
+                        <div class="text-3xl font-semibold text-emerald-600 mr-4">16%</div>
+                        <div class="text-sm text-slate-700">Use AI pre-arrival for personalized wellness plans or health assessments</div>
+                    </div>
+                    <div class="flex items-center p-4 bg-white rounded-lg shadow-sm">
+                        <div class="text-3xl font-semibold text-emerald-600 mr-4">13%</div>
+                        <div class="text-sm text-slate-700">Use AI post-retreat for follow-up or continued engagement</div>
+                    </div>
+                    <div class="flex items-center p-4 bg-white rounded-lg shadow-sm">
+                        <div class="text-3xl font-semibold text-emerald-600 mr-4">8%</div>
+                        <div class="text-sm text-slate-700">Use AI during the retreat through real-time guidance or monitoring</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Travel Advisors -->
+        <div class="bg-gradient-to-br from-slate-900 to-emerald-900 rounded-2xl shadow-lg p-8 text-white mb-8">
+            <h3 class="text-xl font-semibold mb-6">Travel Advisors: AI's Role in Trip Planning</h3>
+            <p class="text-slate-300 mb-6">Travel advisors occupy a distinct position within the multi-day travel ecosystem. Long before AI adoption became widespread, advisors were already customizing trips on behalf of their clients. As traveler expectations around speed, efficiency, and personalization rise, AI use cases among advisors are expanding.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-center">
+                    <div class="text-4xl font-semibold text-emerald-400 mb-2">30%</div>
+                    <div class="text-slate-200 text-sm">Clients bring AI-generated itineraries for review</div>
+                </div>
+                <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-center">
+                    <div class="text-4xl font-semibold text-emerald-400 mb-2">23%</div>
+                    <div class="text-slate-200 text-sm">Clients share AI-sourced recommendations they want included</div>
+                </div>
+                <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-center">
+                    <div class="text-4xl font-semibold text-emerald-400 mb-2">15%</div>
+                    <div class="text-slate-200 text-sm">Clients expect faster, more personalized proposals</div>
+                </div>
+            </div>
+            
+            <div class="bg-white/5 rounded-xl p-6 border border-white/10">
+                <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                    <div>
+                        <div class="text-sm text-slate-400 mb-1">How Advisors View AI</div>
+                        <div class="text-2xl font-semibold">66% see AI as supporting efficiency and creativity</div>
+                    </div>
+                    <div class="text-right">
+                        <div class="text-sm text-slate-400 mb-1">Cost Impact</div>
+                        <div class="text-2xl font-semibold text-emerald-400">28% report decreased costs</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Efficiency Outcomes -->
+        <div class="bg-white rounded-2xl shadow-lg p-8 border border-slate-100">
+            <h3 class="text-xl font-semibold text-slate-900 mb-6">Efficiency Outcomes</h3>
+            <p class="text-slate-600 mb-6">So far, AI's clearest impact for operators has been efficiency, especially in early-stage, repeatable tasks like research, drafting, and content creation.</p>
+            
+            <div class="space-y-4">
+                <div class="flex items-center">
+                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                        <span class="text-xl font-semibold text-blue-900">42%</span>
+                    </div>
+                    <div class="flex-1">
+                        <div class="font-semibold text-slate-900">Faster trip research and itinerary creation</div>
+                        <div class="text-sm text-slate-500">Most reported benefit</div>
+                    </div>
+                </div>
+                <div class="flex items-center">
+                    <div class="w-12 h-12 bg-cyan-100 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                        <span class="text-xl font-semibold text-cyan-700">41%</span>
+                    </div>
+                    <div class="flex-1">
+                        <div class="font-semibold text-slate-900">Reduced manual administrative work</div>
+                        <div class="text-sm text-slate-500">Emails, proposals, data entry</div>
+                    </div>
+                </div>
+                <div class="flex items-center">
+                    <div class="w-12 h-12 bg-emerald-100 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                        <span class="text-xl font-semibold text-emerald-700">39%</span>
+                    </div>
+                    <div class="flex-1">
+                        <div class="font-semibold text-slate-900">Improved marketing or social media content</div>
+                        <div class="text-sm text-slate-500">Content creation at scale</div>
+                    </div>
+                </div>
+                <div class="flex items-center">
+                    <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                        <span class="text-xl font-semibold text-indigo-700">21%</span>
+                    </div>
+                    <div class="flex-1">
+                        <div class="font-semibold text-slate-900">Better personalization or traveler recommendations</div>
+                        <div class="text-sm text-slate-500">Tailored suggestions</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Strategic Implications -->
+    <section id="business-implications" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto print-break">
+        <div class="bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 rounded-3xl shadow-2xl p-8 lg:p-12 text-white relative overflow-hidden">
+            <div class="absolute inset-0 hero-pattern opacity-10"></div>
+            <div class="relative z-10">
+                <div class="flex items-center space-x-3 mb-6">
+                    <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <span class="text-cyan-400 font-semibold uppercase tracking-wider text-sm">Strategic Implications</span>
+                </div>
+                
+                <h2 class="text-4xl font-semibold mb-8">What This Means for Travel Businesses</h2>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div class="space-y-6">
+                        <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
+                            <h3 class="text-xl font-semibold mb-3 flex items-center">
+                                <span class="w-8 h-8 bg-cyan-500 text-slate-900 rounded-full flex items-center justify-center text-sm mr-3">1</span>
+                                Make Customization Easy
+                            </h3>
+                            <p class="text-slate-300">Customization is now a baseline expectation. Allow travelers to select and pay for add-ons at booking. Use AI-powered itinerary builders to personalize faster without rebuilding from scratch.</p>
+                        </div>
+                        
+                        <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
+                            <h3 class="text-xl font-semibold mb-3 flex items-center">
+                                <span class="w-8 h-8 bg-cyan-500 text-slate-900 rounded-full flex items-center justify-center text-sm mr-3">2</span>
+                                Use Payment Plans
+                            </h3>
+                            <p class="text-slate-300">With travelers committing to higher-priced trips by paying over time, payment plans are no longer optional. Ensure your booking system supports installments by default.</p>
+                        </div>
+                        
+                        <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
+                            <h3 class="text-xl font-semibold mb-3 flex items-center">
+                                <span class="w-8 h-8 bg-cyan-500 text-slate-900 rounded-full flex items-center justify-center text-sm mr-3">3</span>
+                                Strengthen Partner Networks
+                            </h3>
+                            <p class="text-slate-300">More experience-driven itineraries require partners outside traditional networks. Find, vet, and work with a wider range of local partners to add new elements without increasing delivery risk.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-6">
+                        <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
+                            <h3 class="text-xl font-semibold mb-3 flex items-center">
+                                <span class="w-8 h-8 bg-cyan-500 text-slate-900 rounded-full flex items-center justify-center text-sm mr-3">4</span>
+                                Build AI Discovery Foundation
+                            </h3>
+                            <p class="text-slate-300">Start building visibility now. AI search and social platforms are already shaping how travelers discover trips. Focus on clear, well-structured trip pages that surface in traditional and AI search engines.</p>
+                        </div>
+                        
+                        <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
+                            <h3 class="text-xl font-semibold mb-3 flex items-center">
+                                <span class="w-8 h-8 bg-cyan-500 text-slate-900 rounded-full flex items-center justify-center text-sm mr-3">5</span>
+                                Start Using AI Operations
+                            </h3>
+                            <p class="text-slate-300">Integrate AI into everyday workflows starting with simple applications like research and drafting. This reduces manual workload and builds familiarity as AI-supported practices become standard.</p>
+                        </div>
+                        
+                        <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
+                            <h3 class="text-xl font-semibold mb-3 flex items-center">
+                                <span class="w-8 h-8 bg-cyan-500 text-slate-900 rounded-full flex items-center justify-center text-sm mr-3">6</span>
+                                Ensure Frictionless Booking
+                            </h3>
+                            <p class="text-slate-300">As more travelers are funneled from discovery channels to your website, the booking experience becomes critical. A smooth, integrated checkout helps convert interest into confirmed bookings.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-12 pt-8 border-t border-white/20 text-center">
+                    <p class="text-xl text-slate-300 italic">
+                        "The year ahead will bring new pressures, but it will also bring real opportunity. Navigate 2026 with clarity, confidence, and a stronger sense of where to focus."
+                    </p>
+                    <p class="text-cyan-400 font-semibold mt-4">— Raj Kumar, COO, ORN Trip Factory</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-white py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-8">
+                <div class="flex items-center space-x-4 mb-4 md:mb-0">
+                    <img src="orn-logo.png" alt="ORN" class="h-12 w-auto brightness-0 invert">
+                    <img src="tripfactory-logo.png" alt="Trip Factory" class="h-10 w-auto brightness-0 invert">
+                </div>
+                <div class="text-slate-400 text-sm text-center md:text-right">
+                    <p>Data sources: 350,000+ trips, 800,000 bookings, 1.3M travelers</p>
+                    <p>Survey: 427 global multi-day travel businesses</p>
+                </div>
+            </div>
+            <div class="pt-8 border-t border-slate-800 text-center text-slate-500 text-sm">
+                <p>© 2026 ORN Trip Factory. All rights reserved.</p>
+                <p class="mt-2">Report prepared for internal use and partner distribution.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Download Modal -->
+    <div id="downloadModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden items-center justify-center no-print">
+        <div class="bg-white rounded-2xl p-8 max-w-md w-full mx-4 shadow-2xl">
+            <div class="text-center">
+                <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg class="w-8 h-8 text-blue-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-semibold text-slate-900 mb-2">Download Report</h3>
+                <p class="text-slate-600 mb-6">Save this report as a PDF for offline reading or sharing with your team.</p>
+                <div class="space-y-3">
+                    <button onclick="window.print()" class="w-full bg-blue-900 hover:bg-blue-800 text-white py-3 rounded-lg font-semibold transition-colors">
+                        Print / Save as PDF
+                    </button>
+                    <button onclick="closeModal()" class="w-full bg-slate-100 hover:bg-slate-200 text-slate-700 py-3 rounded-lg font-semibold transition-colors">
+                        Cancel
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Chart configurations
+        Chart.defaults.font.family = "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif";
+        Chart.defaults.color = '#64748b';
+
+        // Price Chart
+        const priceCtx = document.getElementById('priceChart').getContext('2d');
+        new Chart(priceCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Travel Agencies', 'Wellness Retreats', 'Custom & Luxury', 'Adventure Operators', 'Other Tour Operators'],
+                datasets: [{
+                    label: '2025',
+                    data: [2754, 2786, 5986, 1900, 1900],
+                    backgroundColor: '#94a3b8',
+                    borderRadius: 6
+                }, {
+                    label: '2026',
+                    data: [3549, 3620, 8042, 4906, 4906],
+                    backgroundColor: '#1e3a5f',
+                    borderRadius: 6
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { position: 'bottom' }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function(value) {
+                                return '$' + value.toLocaleString();
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Luxury Chart
+        const luxuryCtx = document.getElementById('luxuryChart').getContext('2d');
+        new Chart(luxuryCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Private/Exclusive Access', 'Cultural/Heritage', 'Multi-destination', 'Culinary/Wine', 'Adventure/Expedition', 'Wellness'],
+                datasets: [{
+                    label: '% of Operators',
+                    data: [70, 43, 38, 29, 25, 20],
+                    backgroundColor: [
+                        '#1e3a5f',
+                        '#3b82f6',
+                        '#06b6d4',
+                        '#6366f1',
+                        '#8b5cf6',
+                        '#10b981'
+                    ],
+                    borderRadius: 6
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        max: 80
+                    }
+                }
+            }
+        });
+
+        // Booking Channels Chart
+        const bookingCtx = document.getElementById('bookingChart').getContext('2d');
+        new Chart(bookingCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Direct via Website (39%)', 'Travel Advisor/Agency (19%)', 'Direct via Phone (11%)', 'OTA (4%)', 'Other (27%)'],
+                datasets: [{
+                    data: [39, 19, 11, 4, 27],
+                    backgroundColor: ['#1e3a5f', '#3b82f6', '#06b6d4', '#94a3b8', '#e2e8f0'],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { position: 'bottom' }
+                }
+            }
+        });
+
+        // AI Use Chart
+        const aiCtx = document.getElementById('aiUseChart').getContext('2d');
+        new Chart(aiCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Marketing/Content', 'Itineraries/Proposals', 'Customer Support', 'Personalization'],
+                datasets: [{
+                    label: '% of Operators',
+                    data: [58, 44, 26, 24],
+                    backgroundColor: '#10b981',
+                    borderRadius: 6
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 70
+                    }
+                }
+            }
+        });
+
+        // Functions
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function downloadReport() {
+            document.getElementById('downloadModal').classList.remove('hidden');
+            document.getElementById('downloadModal').classList.add('flex');
+        }
+
+        function closeModal() {
+            document.getElementById('downloadModal').classList.add('hidden');
+            document.getElementById('downloadModal').classList.remove('flex');
+        }
+
+        // Close modal on outside click
+        document.getElementById('downloadModal').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+    </script>
+</body>
+</html>
